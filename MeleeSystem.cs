@@ -59,7 +59,7 @@ public class MeleeSystem : MonoBehaviour {
 
 		if (hit.collider) {
 			hit.collider.SendMessageUpwards("killRagdoll", SendMessageOptions.DontRequireReceiver); //If the raycast hits a collider it will transmit a function call to any script attached to any object in the hierarchy above the object whose colider was struck by the raycast. This function call turns of the animator component on a biped character and turns on its ragdoll component.
-			Instantiate(sparks, hit.point, Quaternion.FromToRotation(Vector3.forward, hit.normal)); //Instantiates a particle effect prefab at the raycast's point of impact.
+			Instantiate(impactParticles, hit.point, Quaternion.FromToRotation(Vector3.forward, hit.normal)); //Instantiates a particle effect prefab at the raycast's point of impact.
 			audioPlayer.clip = hitSound; //Assigns the "impact" sound to the audioplayer component.
 			audioPlayer.Play(); //Plays the assigned clip.
 		}
