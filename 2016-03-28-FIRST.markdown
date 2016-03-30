@@ -1,0 +1,17 @@
+---
+layout: post
+title:  "FIRST"
+date:   2016-03-28 14:24:12
+categories: GreenFive Development Update
+---
+Today I posted a new SuperEarlyPreAlpha build, and then had to post a new fixed version. There are only a few new additions to this
+build: An animated health bar for the player HUD, and the first weapon is in the game now. The first weapon is just a metal pipe,
+which is a little nod to SystemShock (the first weapon there was a lead pipe).
+
+The next step I plan on taking is to add some more complexity to the melee combat system. Right now there is only one attack type, a
+simple swing attack. I plan to add a thrusting attack that can be used to push back enemies. There will also be a way to block damage.
+There are also instantiated decals which need to be added. I also need to create a few more particle systems and find a few sound clips
+so that striking different materials with the pipe will generate different sounds and cause different particles to be emitted at the
+point of impact.
+
+I think I may have found a way to address the lighting issues I've been having, if so I may include the next scene in the next build.
