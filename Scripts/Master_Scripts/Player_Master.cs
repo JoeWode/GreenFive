@@ -26,43 +26,43 @@ namespace G5
     	}
     	
     	public void CallEventHandsEmpty()
-	{
-	    if (EventHandsEmpty != null)
-	    {
-	        EventHandsEmpty();
-	    }
+		{
+			if (EventHandsEmpty != null)
+			{
+				EventHandsEmpty();
+			}
     	}
     	
     	public void CallEventAmmoChanged()
-	{
-	    if (EventAmmoChanged != null)
-	    {
-	        EventAmmoChanged();
-	    }
+		{
+			if (EventAmmoChanged != null)
+			{
+				EventAmmoChanged();
+			}
     	}
     	
     	public void CallEventPickedUpAmmo(string ammoName, int quantity)
-	{
-	    if (EventPickedUpAmmo != null)
-	    {
-		EventPickedUpAmmo(ammoName, quantity);
-	    }
+		{
+			if (EventPickedUpAmmo != null)
+			{
+			EventPickedUpAmmo(ammoName, quantity);
+			}
     	}
     	
     	public void CallEventPlayerHealthDeduction(int dmg)
-	{
-	    if (EventPlayerHealthDeduction != null)
-	    {
-		EventPlayerHealthDeduction(dmg);
-	    }
+		{
+			if (EventPlayerHealthDeduction != null)
+			{
+			EventPlayerHealthDeduction(dmg);
+			}
     	}
     	
     	public void CallEventPlayerHealthIncrease(int increase)
-	{
-	    if (EventPlayerHealthIncrease != null)
-	    {
-		EventPlayerHealthIncrease(increase);
-	    }
+		{
+			if (EventPlayerHealthIncrease != null)
+			{
+			EventPlayerHealthIncrease(increase);
+			}
     	}
     }
 }

@@ -15,12 +15,14 @@ namespace G5
         public event GameManagerEventHandler ReturnToMainMenuEvent;
         public event GameManagerEventHandler GameOverEvent;
         public event GameManagerEventHandler CyberSpaceToggleEvent;
+        public event GameManagerEventHandler FungusEvent;
         
         
         public bool isGameOver;
         public bool isInventoryUIOn;
         public bool isPlayerStatsUIOn;
         public bool isMenuOn;
+        public bool isFungusRunning = false;
     
     	public void CallEventMenuToggle() 
     	{
@@ -79,6 +81,14 @@ namespace G5
 	    }
     	}
     	
+    	public void CallFungusEvent()
+    	{
+    	    if(FungusEvent != null)
+    	    {
+    	        isFungusRunning = !isFungusRunning;
+    	        FungusEvent();
+    	    }
+    	}
     }
 }
 

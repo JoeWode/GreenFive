@@ -11,6 +11,7 @@ namespace G5
     	public delegate void GeneralEventHandler();
     	public event GeneralEventHandler EventObjectThrow;
     	public event GeneralEventHandler EventObjectPickup;
+    	public event GeneralEventHandler EventObjectInProximity;
     	
     	public delegate void PickupActionEventHandler(Transform item);
     	public event PickupActionEventHandler EventPickupAction;    	
@@ -45,6 +46,14 @@ namespace G5
     	        EventObjectPickup();
     	    }
     	    playerMaster.CallEventInventoryChanged();
+    	}
+    	
+    	public void CallEventObjectInProximity()
+    	{
+    	    if(EventObjectInProximity != null)
+    	    {
+    	        EventObjectInProximity();
+    	    }
     	}
     	
     	public void CallEventPickupAction(Transform item)
