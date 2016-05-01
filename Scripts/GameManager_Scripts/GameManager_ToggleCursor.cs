@@ -14,6 +14,7 @@ namespace G5
     	    gameManagerMaster.MenuToggleEvent += ToggleCursor;
     	    gameManagerMaster.InventoryUIToggleEvent += ToggleCursor;
     	    gameManagerMaster.PlayerStatsUIToggleEvent += ToggleCursor;
+    	    gameManagerMaster.FungusEvent += ToggleCursor;
     	}
     	
     	void OnDisable() 
@@ -21,11 +22,7 @@ namespace G5
     	    gameManagerMaster.MenuToggleEvent -= ToggleCursor;
     	    gameManagerMaster.InventoryUIToggleEvent -= ToggleCursor;
     	    gameManagerMaster.PlayerStatsUIToggleEvent -= ToggleCursor;
-    	}
-    	
-    	void Update()
-    	{
-    	
+    	    gameManagerMaster.FungusEvent -= ToggleCursor;
     	}
     	
     	void SetInitialReferences()
@@ -36,6 +33,7 @@ namespace G5
     	void ToggleCursor()
     	{
     	    isCursorLocked = !isCursorLocked;
+    	    CheckCursorLockState();
     	}
     	
     	void CheckCursorLockState()

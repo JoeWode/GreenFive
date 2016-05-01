@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 namespace G5
 {
@@ -25,7 +26,7 @@ namespace G5
     	
     	void ReturnToMenu()
     	{
-    	    Application.LoadLevel(0);
+    	    SceneManager.LoadScene(0);
     	}
     }
 }

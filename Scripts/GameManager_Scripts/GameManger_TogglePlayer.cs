@@ -15,6 +15,7 @@ namespace G5
     	    gameManagerMaster.MenuToggleEvent += TogglePlayerController;
     	    gameManagerMaster.InventoryUIToggleEvent += TogglePlayerController;
     	    gameManagerMaster.PlayerStatsUIToggleEvent += TogglePlayerController;
+    	    gameManagerMaster.FungusEvent += TogglePlayerController;
     	}
     	
     	void OnDisable() 
@@ -22,6 +23,7 @@ namespace G5
     	    gameManagerMaster.MenuToggleEvent -= TogglePlayerController;
     	    gameManagerMaster.InventoryUIToggleEvent -= TogglePlayerController;
     	    gameManagerMaster.PlayerStatsUIToggleEvent -= TogglePlayerController;
+    	    gameManagerMaster.FungusEvent -= TogglePlayerController;
     	}
     	
     	void SetInitialReferences()

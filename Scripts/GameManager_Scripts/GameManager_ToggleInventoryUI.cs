@@ -35,13 +35,13 @@ namespace G5
     	
     	void CheckForInventoryToggleRequest()
     	{
-    	    if(Input.GetButtonUp(toggleInventoryButton) && !gameManagerMaster.isMenuOn && !gameManagerMaster.isGameOver && hasInventory)
+    	    if(Input.GetButtonUp(toggleInventoryButton) && !gameManagerMaster.isMenuOn && !gameManagerMaster.isGameOver && !gameManagerMaster.isFungusRunning && hasInventory)
     	    {
     	        ToggleInventoryUI();
     	    }
     	}
     	
-    	void ToggleInventoryUI()
+    	public void ToggleInventoryUI()
     	{
     	    if(inventoryUI != null)
     	    {

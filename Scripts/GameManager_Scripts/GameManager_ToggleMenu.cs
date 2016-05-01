@@ -9,11 +9,6 @@ namespace G5
     	private GameManager_Master gameManagerMaster;
     	public GameObject menu;
     	
-    	void Start()
-    	{
-    	    ToggleMenu();
-    	}
-    	
     	void Update()
     	{
     	    CheckForMenuToggleRequest();
@@ -37,7 +32,7 @@ namespace G5
     	
     	void CheckForMenuToggleRequest()
     	{
-    	    if(Input.GetKeyUp(KeyCode.Escape) && !gameManagerMaster.isGameOver && !gameManagerMaster.isInventoryUIOn)
+    	    if(Input.GetKeyUp(KeyCode.Escape) && !gameManagerMaster.isGameOver && !gameManagerMaster.isInventoryUIOn && !gameManagerMaster.isFungusRunning)
     	    {
     	        ToggleMenu();
     	    }

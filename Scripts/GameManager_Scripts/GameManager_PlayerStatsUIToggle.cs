@@ -8,6 +8,7 @@ namespace G5
     	[Tooltip("Does this game have a player information window?")]
     	public bool hasStats;
     	private GameManager_Master gameManagerMaster;
+    	private Player_Inventory playerInventory;
     	public GameObject playerStatsUI;
     	public string togglePlayerStatsButton;
     	
@@ -24,6 +25,7 @@ namespace G5
     	void SetInitialPreferences()
     	{
     	    gameManagerMaster = GetComponent<GameManager_Master>();
+    	    playerInventory = GameObject.Find("FPSController_ALFDP").GetComponent<Player_Inventory>();
     	    
     	    if(togglePlayerStatsButton == "")
 	    {
@@ -34,7 +36,7 @@ namespace G5
     	
     	void CheckForPlayerStatsToggleRequest()
     	{
-    	    if(Input.GetButtonUp(togglePlayerStatsButton) && !gameManagerMaster.isMenuOn && !gameManagerMaster.isGameOver && hasStats)
+    	    if(Input.GetButtonUp(togglePlayerStatsButton) && !gameManagerMaster.isMenuOn && !gameManagerMaster.isGameOver && !gameManagerMaster.isFungusRunning && hasStats)
 	    {
 	        TogglePlayerStatsUI();
     	    }
@@ -47,6 +49,11 @@ namespace G5
 	        playerStatsUI.SetActive(!playerStatsUI.activeSelf);
 	        gameManagerMaster.isPlayerStatsUIOn = !gameManagerMaster.isPlayerStatsUIOn;
 	        gameManagerMaster.CallEventPlayerStatsUIToggle();
+	        
+	        if(gameManagerMaster.isPlayerStatsUIOn)
+		{
+		    playerInventory.DeactivateAllInventoryItems();
+    	        }
     	    }
     	}
     }

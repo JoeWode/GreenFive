@@ -7,7 +7,7 @@ namespace G5
     {
     
     	private GameManager_Master gameManagerMaster;
-    	private bool isPaused;
+    	private bool isPaused = false;
     	
     	void OnEnable() 
     	{

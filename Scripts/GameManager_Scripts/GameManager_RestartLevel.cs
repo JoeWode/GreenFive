@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 namespace G5
 {
@@ -25,7 +26,8 @@ namespace G5
     	
     	void RestartLevel()
     	{
-    	    Application.LoadLevel(Application.loadedLevel);
+    	    //Application.LoadLevel(Application.loadedLevel);
+    	    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     	}
     }
 }
