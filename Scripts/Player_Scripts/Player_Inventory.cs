@@ -18,7 +18,7 @@ namespace G5
     	private Transform currentlyHeldItem;
     	private int counter;
     	private string buttonText;
-    	private List<Transform>listInventory = new List<Transform>();
+    	private List<Transform> listInventory = new List<Transform>();
     	
     	void OnEnable() 
     	{
@@ -28,14 +28,19 @@ namespace G5
     	    
     	    playerMaster.EventInventoryChanged += UpdateInventoryListAndUI;
     	    playerMaster.EventInventoryChanged += CheckIfHandsEmpty;
-    	    playerMaster.EventInventoryChanged += ClearHands;
+    	    playerMaster.EventHandsEmpty += ClearHands;
     	}
 
     	void OnDisable() 
     	{
     	    playerMaster.EventInventoryChanged -= UpdateInventoryListAndUI;
 	    playerMaster.EventInventoryChanged -= CheckIfHandsEmpty;
-    	    playerMaster.EventInventoryChanged -= ClearHands;
+    	    playerMaster.EventHandsEmpty -= ClearHands;
+    	}
+    	
+    	void Update()
+    	{
+    	    CheckForHolsterRequest();
     	}
     	
     	void SetInitialReferences()
@@ -61,11 +66,20 @@ namespace G5
     	            buttonText = child.name;
     	            go.GetComponentInChildren<Text>().text = buttonText;
     	            int index = counter;
-    	            go.GetComponent<Button>().onClick.AddListener(delegate {ActivateInventoryItem(index);});
+    	            go.GetComponent<Button>().onClick.AddListener(delegate { ActivateInventoryItem(index); });
     	            go.GetComponent<Button>().onClick.AddListener(inventoryUIScript.ToggleInventoryUI);
     	            go.transform.SetParent(inventoryUIParent, false);
     	            counter++;
     	        }
+    	    }
+    	}
+    	
+    	void CheckForHolsterRequest()
+    	{
+    	    if(Input.GetButtonUp("Holster"))
+    	    {
+    	        DeactivateAllInventoryItems();
+    	        Debug.Log("I tried so hard.");
     	    }
     	}
     	
@@ -96,7 +110,7 @@ namespace G5
     	    StartCoroutine(PlaceItemInHands(listInventory[inventoryIndex]));
     	}
     	
-    	void DeactivateAllInventoryItems()
+    	public void DeactivateAllInventoryItems()
     	{
     	    foreach(Transform child in inventoryPlayerParent)
     	    {

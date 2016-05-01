@@ -15,9 +15,12 @@ namespace G5
     	
     	private Transform itemAvailableForPickup;
     	private RaycastHit hit;
-    	private float detectRange = 3.0f;
-    	private float detectRadius = 0.7f;
-    	private bool itemInRange;
+    	public float detectRange = 3.0f;
+    	public float detectRadius = 0.7f;
+    	public bool itemInRange;
+    	public bool isProximate = false;
+    	private float distanceToPlayer;
+    	public float deactivateDistance = 10.0f;
     	
     	private float labelWidth = 200;
     	private float labelHeight = 50;
@@ -26,6 +29,7 @@ namespace G5
     	{
     	    CastRayForDetectingItems();
     	    CheckForItemPickupAttempt();
+    	    CheckForObjectProximity();
     	}
     	
     	void CastRayForDetectingItems()
@@ -49,6 +53,26 @@ namespace G5
     	    }
     	}
     	
+    	void CheckForObjectProximity()
+    	{ 
+    	    if(itemInRange && itemAvailableForPickup != null)
+    	    {
+    	        isProximate = true;
+    	        if(itemAvailableForPickup.GetComponent<Item_Master>() != null)
+    	        {
+    	        	itemAvailableForPickup.GetComponent<Item_Master>().CallEventObjectInProximity();
+    	        }
+    	    }
+    	    else if(!itemInRange && itemAvailableForPickup != null)
+    	    {
+    	        isProximate = false;
+    	        if(itemAvailableForPickup.GetComponent<Item_Master>() != null)
+				{
+					itemAvailableForPickup.GetComponent<Item_Master>().CallEventObjectInProximity();
+    	        }
+    	    }
+    	}
+
     	void OnGUI()
     	{
     	    if(itemInRange && itemAvailableForPickup != null)
