@@ -9,6 +9,7 @@ namespace G5
     	private Item_Master itemMaster;
     	public Collider[] colliders;
     	public PhysicMaterial myPhysicMaterial;
+    	private string playerTag;
     	
     	void OnEnable() 
     	{
@@ -24,14 +25,21 @@ namespace G5
     	    itemMaster.EventObjectPickup -= DisableColliders;
     	}
     	
+    	void Start()
+    	{
+    	    SetInitialReferences();
+    	    Invoke("SetInitialReferences", 0.001f);
+    	}
+    	
     	void SetInitialReferences()
     	{
     	    itemMaster = GetComponent<Item_Master>();
+    	    playerTag = "Player";
     	}
     	
     	void CheckIfStartsInInventory()
     	{
-    	    if(transform.root.CompareTag(GameManager_References._playerTag))
+    	    if(transform.root.CompareTag(playerTag))
     	    {
     	        DisableColliders();
     	    }

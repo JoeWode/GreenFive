@@ -8,6 +8,7 @@ namespace G5
     	
     	private Item_Master itemMaster;
     	public Vector3 itemLocalPosition;
+    	private string playerTag;
     	
     	void OnEnable() 
     	{
@@ -21,14 +22,21 @@ namespace G5
     	    itemMaster.EventObjectPickup -= SetPositionOnPlayer;
     	}
     	
+    	void Start()
+    	{
+    	    SetInitialReferences();
+    	    Invoke("SetInitialReferences", 0.001f);
+    	}
+    	
     	void SetInitialReferences()
     	{
     	    itemMaster = GetComponent<Item_Master>();
+    	    playerTag = "Player";
     	}
     	
     	void SetPositionOnPlayer()
     	{
-    	    if(transform.root.CompareTag(GameManager_References._playerTag))
+    	    if(transform.root.CompareTag(playerTag))
     	    {
     	        transform.localPosition = itemLocalPosition;
     	    }

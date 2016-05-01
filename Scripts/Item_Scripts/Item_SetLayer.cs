@@ -9,6 +9,7 @@ namespace G5
     	private Item_Master itemMaster;
     	public string itemThrowLayer;
     	public string itemPickupLayer;
+    	private string playerTag;
     	
     	void OnEnable() 
     	{
@@ -24,9 +25,16 @@ namespace G5
     	    itemMaster.EventObjectThrow -= SetItemToThrowLayer;
     	}
     	
+    	void Start()
+    	{
+    		SetInitialReferences();
+    		Invoke("SetInitialReferences", 0.001f);
+    	}
+    	
     	void SetInitialReferences()
     	{
     	    itemMaster = GetComponent<Item_Master>();
+    	    playerTag = "Player";
     	}
     	
     	void SetItemToThrowLayer()
@@ -51,7 +59,7 @@ namespace G5
     	        itemThrowLayer = "Item";
     	    }
     	    
-    	    if(transform.root.CompareTag(GameManager_References._playerTag))
+    	    if(transform.root.CompareTag(playerTag))
     	    {
     	        SetItemToPickupLayer();
     	    }
